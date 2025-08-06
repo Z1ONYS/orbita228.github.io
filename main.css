@@ -1,0 +1,233 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+    background-image: url('../img/fon.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Шапка сайта */
+header {
+    background: #35424a;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Навигационное меню */
+nav {
+    background: #e8491d;
+    padding: 10px;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Основной контейнер */
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Секции */
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #35424a;
+}
+
+/* Подвал */
+footer {
+    background: #35424a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-blue {
+    background: #2196F3;
+}
+
+.btn-blue:hover {
+    background: #0b7dda;
+}
+
+.btn-red {
+    background: #f44336;
+}
+
+.btn-red:hover {
+    background: #da190b;
+}
+
+.btn-orange {
+    background: #ff9800;
+}
+
+.btn-orange:hover {
+    background: #e68a00;
+}
+
+/* Список услуг */
+.services-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+/* Формы */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+    
+    nav li {
+        display: block;
+        margin: 10px 0;
+    }
+    
+    .services-list {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 200px;
+  background-color: #fff;
+  border: 1px solid #000;
+  opacity: 1;
+  z-index: 9999;
+}
+
+.btn-call {
+    background: #4CAF50;
+    padding: 12px 25px;
+    font-size: 18px;
+    transition: all 0.3s;
+}
+
+.btn-call:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+.btn-call:active {
+    transform: scale(0.98);
+}
