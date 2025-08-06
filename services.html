@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог услуг</title>
+    <style>
+        /* Основные стили каталога */
+        .catalog {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .catalog-title {
+            text-align: center;
+            color: #0a99f3;
+            margin-bottom: 30px;
+        }
+        
+        .catalog-filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .filter-group select, .filter-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: #f4f4f4;
+        }
+        
+        .product-category {
+            display: inline-block;
+            background: #f4f4f4;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        
+        .product-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e8491d;
+            margin: 10px 0;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #45a049;
+        }
+        
+        .btn-secondary {
+            background: #f4f4f4;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 5px;
+        }
+        
+        .pagination button {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+        }
+        
+        .pagination button.active {
+            background: #35424a;
+            color: white;
+            border-color: #35424a;
+        }
+        
+        .no-products {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 40px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="catalog">
+        <h2 class="catalog-title">Каталог услуг</h2>
+        
+        <div class="catalog-filters">
+            <div class="filter-group">
+                <label for="category">Категория</label>
+                <select id="category">
+                    <option value="all">Все категории</option>
+                    <option value="business">Для  малого бизнеса</option>
+                    <option value="business1">Для среднего бизнеса</option>
+                    <option value="business2">Для большого бизнеса</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="price">Цена до</label>
+                <input type="range" id="price" min="0" max="1000000" step="500" value="1000000">
+                <span id="price-value">10000 руб.</span>
+            </div>
+            
+            <div class="filter-group">
+                <label for="search">Поиск</label>
+                <input type="text" id="search" placeholder="Название услуги">
+            </div>
+        </div>
+        
+        <div class="catalog-grid" id="products-container">
+            <!-- Товары будут добавляться через JavaScript -->
+        </div>
+        
+        <div class="pagination">
+            <button id="prev-page">&lt;</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button id="next-page">&gt;</button>
+        </div>
+    </div>
+
+    <script>
+        // Данные товаров
+        const products = [
+            {
+                id: 1,
+                title: "Дизайн для малого бизнеса",
+                category: "business",
+                price: 10000,
+                image: ""
+            },
+            {
+                id: 2,
+                title: "Дизайн для среднего бизнеса",
+                category: "business1",
+                price: 20000,
+                image: "https://via.placeholder.com/300x200?text=Ноутбук"
+            },
+            {
+                id: 3,
+                title: "Дизайн для большого бизнеса",
+                category: "business2",
+                price: 30000,
+                image: "https://via.placeholder.com/300x200?text=Футболка"
+            },
+            
+        ];
+        
+        // Элементы DOM
+        const productsContainer = document.getElementById('products-container');
+        const categoryFilter = document.getElementById('category');
+        const priceFilter = document.getElementById('price');
+        const priceValue = document.getElementById('price-value');
+        const searchFilter = document.getElementById('search');
+        const prevPageBtn = document.getElementById('prev-page');
+        const nextPageBtn = document.getElementById('next-page');
+        
+        // Отображение товаров
+        function displayProducts(productsToDisplay) {
+            productsContainer.innerHTML = '';
+            
+            if (productsToDisplay.length === 0) {
+                productsContainer.innerHTML = '<div class="no-products">Товары не найдены. Попробуйте изменить параметры поиска.</div>';
+                return;
+            }
+            
+            productsToDisplay.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.title}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">${product.title}</h3>
+                        <span class="product-category">${getCategoryName(product.category)}</span>
+                        <div class="product-price">${product.price.toLocaleString()} руб.</div>
+                        <div class="product-actions">
+                            <button class="btn btn-secondary">Подробнее</button>
+                             <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="product-details" id="productDetailsContent">
+                <!-- Содержимое будет заполнено JavaScript -->
+            </div>
+        </div>
+    </div>
+                            <button class="btn btn-primary">В корзину</button>
+                        </div>
+                    </div>
+                `;
+                
+                productsContainer.appendChild(productCard);
+            });
+        }
+        
+        // Получение названия категории
+        function getCategoryName(categoryId) {
+            const categories = {
+                'business': 'Для малого бизнеса',
+                'business1': 'Для среднего бизнеса',
+                'business2': 'Для большого бизнеса',
+            };
+            return categories[categoryId] || categoryId;
+        }
+        
+        // Фильтрация товаров
+        function filterProducts() {
+            const selectedCategory = categoryFilter.value;
+            const maxPrice = parseInt(priceFilter.value);
+            const searchQuery = searchFilter.value.toLowerCase();
+            
+            const filtered = products.filter(product => {
+                return (selectedCategory === 'all' || product.category === selectedCategory) &&
+                       (product.price <= maxPrice) &&
+                       (product.title.toLowerCase().includes(searchQuery));
+            });
+            
+            displayProducts(filtered);
+        }
+        
+        // Инициализация
+        function init() {
+            // Показать все товары при загрузке
+            displayProducts(products);
+            
+            // Обновление значения цены
+            priceValue.textContent = `${priceFilter.value} руб.`;
+            
+            // События
+            categoryFilter.addEventListener('change', filterProducts);
+            priceFilter.addEventListener('input', () => {
+                priceValue.textContent = `${priceFilter.value} руб.`;
+                filterProducts();
+            });
+            searchFilter.addEventListener('input', filterProducts);
+            
+            // Пагинация (заглушка)
+            prevPageBtn.addEventListener('click', () => alert('Предыдущая страница'));
+            nextPageBtn.addEventListener('click', () => alert('Следующая страница'));
+        }
+        
+        // Запуск
+        init();
+    </script>
+        <div class="knopku">
+        <li><a href = "contact.html">Перейти к контактам</a></li> 
+        
+        <section id="services">
+            <h2>Наши услуги</h2>
+            <ul>
+                <li>Веб-разработка</li>
+                <li>Дизайн</li>
+                <li>Консультации</li>
+            </ul>
+        </div>
+</body>
+</html>
