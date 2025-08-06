@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой первый сайт с кнопками</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        /* Существующие стили остаются без изменений */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-image: url('img/fon.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        
+        /* Дополнительные улучшения */
+        .container {
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        
+        /* Анимация кнопок */
+        .btn {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+            nav li {
+                display: block;
+                margin: 10px 0;
+            }
+            .web ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Новые элементы */
+        .feature-box {
+            background: rgba(255,255,255,0.8);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Существующий header и nav без изменений -->
+    <header>
+        <h1>Добро пожаловать на мой сайт</h1>
+        <p>Профессиональные решения для вашего бизнеса</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="#about.html">О нас</a></li>
+            <li><a href="#services.html">Услуги</a></li>
+            <li><a href="#contact.html">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>О нашем сайте</h2>
+            <div class="feature-box">
+                <p>Мы предлагаем комплексные решения для вашего бизнеса. Наша команда профессионалов поможет вам достичь новых высот в цифровом пространстве.</p>
+            </div>
+            
+            <!-- Новый блок с преимуществами -->
+            <div class="advantages" style="display: flex; flex-wrap: wrap; justify-content: space-around; margin: 30px 0;">
+                <div class="feature-box" style="flex: 1; min-width: 250px; margin: 10px;">
+                    <h3>Качество</h3>
+                    <p>Гарантия высокого качества всех наших услуг</p>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3163/3163704.png" style="width: 300px; height: 300px" alt="">
+                </div>
+                <div class="feature-box" style="flex: 1; min-width: 250px; margin: 10px;">
+                    <h3>Опыт</h3>
+                    <p>Более 10 лет успешной работы на рынке</p>
+                    <img src="https://issek.hse.ru/data/2023/03/20/2037197600/3%D1%82%D0%B8%D1%82%D1%83%D0%BB.png" style="width: 350px; height: 300px" alt="">
+                </div>
+                <div class="feature-box" style="flex: 1; min-width: 250px; margin: 10px;">
+                    <h3>Поддержка</h3>
+                    <p>Круглосуточная техническая поддержка</p>
+                    <img src="https://cdn-icons-png.flaticon.com/512/1189/1189156.png" style="width: 300px; height: 300px;" alt="">
+                </div>
+            </div>
+            
+            <a href="contact.html" class="btn btn-blue">Перейти к контактам</a>
+        </section>
+        
+        <section id="services">
+            <h2>Наши услуги</h2>
+            
+            <!-- Улучшенное отображение услуг -->
+            <div class="web">
+                <ul style="list-style: none; padding: 0; margin: 20px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                    <li>
+                        <div class="feature-box">
+                         <div style="display: flex; flex-direction: column; height: 100%; position: relative;">
+                            <h3>Веб-разработка</h3>
+                              <p>Создание современных веб-приложений</p>
+                               <img src="https://telegra.ph/file/cab0140386f0556b775c4.jpg" style="width: 350px; height: 300px; object-fit: cover;" alt="">
+                                <div style="margin-top: auto; padding-top: 20px;">
+                                 <a href="webrasrabotka.html" class="btn btn-blue">Подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                <li>
+                        <div class="feature-box">
+                            <h3>Дизайн</h3>
+                            <p>Креативные дизайн-решения</p>
+                            <img src="https://mobios.school/images/31.05.2021/Role.jpg" style="width: 350px; height: 300px; object-fit: cover;" alt="">
+                            <div style="margin-top: auto; padding-top: 20px;">
+                            <a href="disain.html" class="btn btn-blue">Подробнее</a>
+                        </div>
+                    </div>
+                    </li>
+                    <li>
+                        <div class="feature-box">
+                            <h3>Консультации</h3>
+                            <p>Профессиональные IT-консультации</p>
+                            <img src="https://psypsy.online/wp-content/uploads/2024/06/konsultacziya-sportivnogo-psihologa-scaled.webp" style="width: 300px; height: 300px; object-fit: cover;" alt="">
+                        <div style="margin-top: auto; padding-top: 20px;">
+                            <a href="consult.html" class="btn btn-blue">Подробнее</a>
+                        </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="btn btn-blue" id="modalBtn">Заказать услугу</button>
+            
+            <!-- Модальное окно остается без изменений -->
+            <div id="myModal" class="modal">
+                <!-- ... существующее модальное окно ... -->
+            </div>
+        </section>
+        
+        <section id="contact">
+            <h2>Контакты</h2>
+            <div class="feature-box">
+                <p>Мы всегда рады вашим вопросам и предложениям</p>
+                
+                <!-- Улучшенные контакты -->
+                <div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
+                    <button class="btn" onclick="window.location.href='tel:+79081590940'">
+                        <span style="margin-right: 8px;">📞</span> Позвонить нам
+                    </button>
+                    <script>
+    document.getElementById('smartCallBtn').addEventListener('click', function() {
+    const phoneNumber = '+79281590940';
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if(isMobile) {
+        window.location.href = `tel:${phoneNumber}`;
+    } else {
+        // Для ПК показываем номер
+        alert(`Позвоните нам по номеру: ${formatPhone(phoneNumber)}`);
+        
+        // Или копируем в буфер обмена
+        navigator.clipboard.writeText(phoneNumber)
+            .then(() => alert('Номер скопирован!'))
+            .catch(() => alert('Не удалось скопировать номер'));
+    }
+    });
+
+    function formatPhone(phone) {
+    return phone.replace(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})/, '+$1 ($2) $3-$4-$5');
+    }
+    // Можно добавить время работы (пример проверки)
+    const now = new Date();
+    const hours = now.getHours();
+    if(hours < 8 || hours > 9) {
+    alert('Сейчас нерабочее время (8:00-21:00). Мы перезвоним вам утром!');
+    } else {
+    window.location.href = 'tel:+79281590940';
+    }
+    </script>
+                    <button class="btn btn-blue" onclick="window.location.href='mailto:info@example.com'">
+                        <span style="margin-right: 8px;">✉️</span> Написать email
+                    </button>
+                    <button class="btn btn-orange" id="callbackBtn">
+                        <span style="margin-right: 8px;">🔄</span> Обратный звонок
+                    </button>
+                </div>
+                
+                <!-- Форма обратной связи -->
+                <div id="callbackForm" style="display:none; margin-top:20px;">
+                    <h3>Форма обратного звонка</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="phone">Ваш телефон:</label>
+                            <input type="tel" id="phone" placeholder="+7 (XXX) XXX-XX-XX" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Удобное время звонка:</label>
+                            <input type="text" id="time" placeholder="Например, с 14:00 до 18:00">
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button type="submit" class="btn">Отправить</button>
+                            <button type="button" class="btn btn-red" onclick="document.getElementById('callbackForm').style.display='none'">Отмена</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <p>&copy; 2025 Мой сайт. Все права защищены.</p>
+            <div style="margin-top: 15px;">
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn">Наверх</button>
+                <a href="privacy.html" style="color: white; margin-left: 20px;">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Существующий JavaScript код остается
+        
+        // Дополнительный функционал
+        document.addEventListener('DOMContentLoaded', function() {
+            // Плавная прокрутка для якорных ссылок
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Таймер для формы обратного звонка
+            let callbackTimer;
+            document.getElementById('callbackBtn').addEventListener('click', function() {
+                const form = document.getElementById('callbackForm');
+                form.style.display = 'block';
+                
+                // Скрыть форму через 2 минуты если не заполнена
+                clearTimeout(callbackTimer);
+                callbackTimer = setTimeout(() => {
+                    if (form.style.display === 'block') {
+                        form.style.display = 'none';
+                    }
+                }, 120000);
+            });
+        });
+    </script>
+</body>
+</html>
